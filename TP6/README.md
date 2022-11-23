@@ -10,7 +10,7 @@
 | 0xef01     | 0xbcde    | pB         | increment2Val   | int*    | 1ère           |
 | 0xf012     | ~1~ 6     | increment  | increment2Val   | int     | 1ère           |
 
-Affichage :
+#### Affichage :
 
 > [main] a = 2, b = 7, inc = 1
 
@@ -26,7 +26,7 @@ Affichage :
 | 0x0123     | 0xabcd    | pN         | incrementParAdresse    | int*    | 3ème              |
 | 0x1234     | 2         | i          | incrementParAdresse    | int     | 3ème              |
 
-Affichage :
+#### Affichage :
 
 > [main] Adresse : 0xabcd, valeur : 5
 > [incrementParValeur] Adresse : 0xbcde, valeur : 5 (on travaille sur une copie)<br>
