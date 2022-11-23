@@ -10,6 +10,10 @@
 | 0xef01     | 0xbcde    | pB         | increment2Val   | int*    | 1ère           |
 | 0xf012     | ~1~ 6     | increment  | increment2Val   | int     | 1ère           |
 
+Affichage :
+
+> [main] a = 2, b = 7, inc = 1
+
 ## Exemple 2 - Trace mémoire
 
 | Adresse    | Valeur    | Variable   | Bloc / fonction        | Type    | Libération        |
@@ -22,12 +26,12 @@
 | 0x0123     | 0xabcd    | pN         | incrementParAdresse    | int*    | 3ème              |
 | 0x1234     | 2         | i          | incrementParAdresse    | int     | 3ème              |
 
-Affichages :
+Affichage :
 
 > [main] Adresse : 0xabcd, valeur : 5
-> [incrementParValeur] Adresse : 0xbcde, valeur : 5 (on travaille sur une copie)
-> [main] Valeur après incrementParValeur (1/2) : 5 (la valeur n'a pas été modifiée)
-> [incrementParValeur] Adresse : 0xdef0, valeur : 5 (on travaille sur une copie)
-> [main] Valeur après incrementParValeur (2/2) : 7 (la valeur retournée a été affectée à n)
-> [incrementParAdresse] Adresse : 0xabcd, valeur : 7 (on travaille sur le même espace mémoire)
+> [incrementParValeur] Adresse : 0xbcde, valeur : 5 (on travaille sur une copie)<br>
+> [main] Valeur après incrementParValeur (1/2) : 5 (la valeur n'a pas été modifiée)<br>
+> [incrementParValeur] Adresse : 0xdef0, valeur : 5 (on travaille sur une copie)<br>
+> [main] Valeur après incrementParValeur (2/2) : 7 (la valeur retournée a été affectée à n)<br>
+> [incrementParAdresse] Adresse : 0xabcd, valeur : 7 (on travaille sur le même espace mémoire)<br>
 > [main] Valeur après incrementParAdresse : 9 (la valeur est directement modifiée en mémoire)
