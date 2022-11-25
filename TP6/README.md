@@ -103,12 +103,13 @@ printf("%d", *p*5);   // 15
 - `const int *` : pointeur sur un entier constant (pointeur sur un `const int`) \*
 - `int * const` : pointeur constant sur un entier
 - `int const * const` : pointeur constant sur un entier constant
+- `const int * const` : pointeur constant sur un entier constant
 
 **NB :** Le premier `const` peut être écrit indifféremment des deux côtés du type :
 - `const int *` == `int const *`
 - `const int * const` == `int const * const`
 
-##### Pour aller plus loin :
+##### 🤯 Pour aller plus loin :
 
 - `int **` : pointeur sur un pointeur sur un entier
 - `int ** const` : pointeur constant sur un pointeur sur un entier
@@ -118,7 +119,7 @@ printf("%d", *p*5);   // 15
 
 <sup>*Source : https://stackoverflow.com/questions/1143262/what-is-the-difference-between-const-int-const-int-const-and-int-const*</sup>
 
-##### A quoi ça sert d'utiliser `const` avec des pointeurs ?
+#### 🤔 Mais à quoi ça sert d'utiliser `const` avec des pointeurs ?
 
 Parfois, nous manipulons de lourdes structures. Par exemple, si nous avons une structure `Jeu` qui contient toutes les données d'un jeu (plusieurs centaines d'octets), la passer en paramètres par valeur est lourd car cela revient à copier/coller tous ces octets pour la fonction appelée :
 ```C
