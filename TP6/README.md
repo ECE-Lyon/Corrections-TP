@@ -38,20 +38,53 @@
 
 ## Explication alternative
 
-Soit :
+Soient `a` et `p` :
 ```C
 int a;
 int* p = &a;
 ```
 
-On a vu que les symboles `*` et `&` s'annulent, puisqu'ils ont l'effet inverse.
+Nous avons vu que les symboles `*` et `&` s'annulent, puisqu'ils ont l'effet inverse.
 Donc `*&a` est équivalent à `a` et à `*&*&*&*&*&*&a`.
 
 Donc si et seulement si `p == &a` alors
 ```C
- p == &a
-*p == *&a
-*p == a
+ p  ==  &a
+*p  == *&a
+*p  ==   a
+```
+
+## Déclarations multiples
+
+On peut déclarer plusieurs entiers ainsi :
+
+```C
+int a, b, c, d;
+```
+
+Pour déclarer plusieurs pointeurs de la même façon, attention à répéter l'`*` :
+```C
+int* p1, *p2, *p3, *p4;
+```
+
+En effet, dans :
+```C
+int *p1, a, *p2, b, c;
+```
+`a`, `b` et `c` sont des entiers et `p1` et `p2` sont des pointeurs sur entier.  
+
+
+## Multiplier avec des pointeurs
+
+`*` est l'opérateur de la multiplication, sauf s'il est devant un pointeur !
+
+```C
+int a = 3;
+int* p = &a;
+printf("%d", 2 * *p); // 6
+printf("%d", 2**p);   // 6
+printf("%d", *p*a);   // 9
+printf("%d", *p*5);   // 15
 ```
 
 ## Exercice d'entraînement
