@@ -121,20 +121,23 @@ printf("%d", *p*5);   // 15
 
 #### 🤔 Mais à quoi ça sert d'utiliser `const` avec des pointeurs ?
 
-Parfois, nous manipulons de lourdes structures. Par exemple, si nous avons une structure `Jeu` qui contient toutes les données d'un jeu (plusieurs centaines d'octets), la passer en paramètres par valeur est lourd car cela revient à copier/coller tous ces octets pour la fonction appelée :
+Parfois, nous manipulons de lourdes structures. Par exemple, si nous avons une structure `Jeu` qui contient toutes les données d'un jeu (plusieurs centaines d'octets), la passer en paramètres par valeur est lourd car cela revient à copier/coller tous ses octets dans la fonction appelée :
 ```C
-void afficherJeu(Jeu j); // La structure (= beaucoup d'octets) va être copiée lors de l'appel
+void afficherJeu(Jeu j); // Notre structure (= beaucoup d'octets) va être copiée dans j au moment de l'appel
 ```
 
 Nous préférons dans ce cas passer par adresse pour ne copier qu'une adresse :
 ```C
-void afficherJeu(Jeu* j); // L'adresse de la structure va être copiée lors de l'appel (beaucoup moins lourd)
+void afficherJeu(Jeu* j); // C'est maintenant l'adresse de notre structure va être copiée dans j au moment de l'appel (beaucoup moins lourd)
 ```
 
-Cependant, cela revient à transmettre à la fonction l'original, qu'elle pourra modifier à sa guide sans que l'on ne puisse faire quoi que ce soit... C'est là qu'intervient `const` :
+Cependant, cela revient à donner accès à notre variable à la fonction `afficherJeu`, elle pourra modifier à sa guide notre structure `Jeu` sans que l'on ne puisse faire quoi que ce soit... C'est là qu'intervient `const` :
 ```C
-void afficherJeu(const Jeu* j); // Nous ne copions que l'adresse (léger), il s'agit donc d'un passage par adresse, mais la fonction ne pourra pas modifier notre structure Jeu !
+void afficherJeu(const Jeu* j); // Nous ne copions que l'adresse (léger) de notre structure, il s'agit donc d'un passage par adresse, mais la fonction ne pourra pas modifier notre structure Jeu grâce au const !
 ```
+
+Ici, en voyant le prototype avec `const`, cela nous rassure : impossible pour la procédure `afficherJeu` de modifier la variable `Jeu` dont on fournira l'adresse. Mais comme on ne copie qu'une adresse au lieu de plusieurs octets (la structure complète), cela rend notre programme plus rapide !
+
 --- 
 
 ## Exercice d'entraînement
