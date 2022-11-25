@@ -10,4 +10,4 @@ void afficherNombreRationnel(NombreRationnel n);
 NombreRationnel multiplier(NombreRationnel n1, NombreRationnel n2);
 NombreRationnel additionner(NombreRationnel n1, NombreRationnel n2);
 
-#endif //TP4_NOMBRERATIONNEL_H
+#endif

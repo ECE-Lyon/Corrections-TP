@@ -35,3 +35,59 @@
 > [main] Valeur après incrementParValeur (2/2) : 7 (la valeur retournée a été affectée à n)<br>
 > [incrementParAdresse] Adresse : 0xabcd, valeur : 7 (on travaille sur le même espace mémoire)<br>
 > [main] Valeur après incrementParAdresse : 9 (la valeur est directement modifiée en mémoire)
+
+## Explication alternative
+
+Soit :
+```C
+int a;
+int* p = &a;
+```
+
+On a vu que les symboles `*` et `&` s'annulent, puisqu'ils ont l'effet inverse.
+Donc `*&a` est équivalent à `a` et à `*&*&*&*&*&*&a`.
+
+Donc si et seulement si `p == &a` alors
+```C
+ p == &a
+*p == *&a
+*p == a
+```
+
+## Exercice d'entraînement
+
+Donnez les affichages produits par chaque `printf` :
+
+```C
+int a = 5; // valeur : 5️⃣, adresse de a : 0x1234
+int b = 6; // valeur : 6️⃣, adresse de b : 0x5678
+int* pA = &a; // valeur : 0x1234, adresse de pA : 0xabcd
+printf("%d", a);
+printf("%p", &a);
+printf("%p", pA);
+printf("%p", &pA);
+printf("%d", *pA);
+*pA = 7;
+printf("%d", a);
+printf("%d", *pA);
+pA = &b;
+printf("%p", pA);
+printf("%p", &pA);
+printf("%d", *pA);
+int* pB = pA; // adresse de pB : 0x6420
+printf("%p", pB);
+printf("%p", &pB);
+printf("%d", *pB);
+*pB = 20;
+printf("%d", *pA);
+printf("%d", b);
+int** pp = &pB; // adresse de pp : 0xfabe
+printf("%p", &pp);
+printf("%p", pp);
+printf("%p", *pp);
+printf("%d", **pp);
+printf("%d", 2***pp);
+*pp = &a;
+**pp = 10;
+printf("%d", a);
+```
