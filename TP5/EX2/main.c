@@ -10,6 +10,9 @@ int main(void) {
     do {
         printf("Combien d'entiers ?\n");
         scanf("%d", &n);
+        if(n < 0 || n > TAILLE_MAX) {
+            printf("Ce nombre doit etre en 0 et %d, recommencez.\n", TAILLE_MAX);
+        }
     } while (n < 0 || n > TAILLE_MAX);
 
     for (i = 0; i < n; i++) {

@@ -3,7 +3,7 @@
 int main(void) {
     int choix = 0;
 
-    do {
+    while(1) { // boucle infinie
         printf("Que voulez-vous ?\n");
         printf("1: Coca-Cola\n");
         printf("2: Coca-Cola\n");
@@ -29,12 +29,16 @@ int main(void) {
                 printf("Capuccino\n");
                 break;
             }
+            case 0: {
+                return 0; // met immédiatement fin à la fonction main() et donc au programme
+                // le break; est inutile car après un return il serait de toute façon inaccessible
+            }
             default: {
                 printf("Choix invalide");
-                break; // facultatif
+                break; // break; facultatif car il n'y a plus de case après
             }
         }
-    } while (choix > 0);s
+    }
 
-    return 0;
+    // Le return 0; est plus haut, le principal c'est de l'atteindre !
 }

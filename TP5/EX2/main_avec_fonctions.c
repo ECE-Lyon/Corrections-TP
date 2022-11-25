@@ -12,10 +12,10 @@ int saisirTailleLogique(int taillePhysique) {
 }
 
 void afficherTab(int tab[TAILLE_MAX], int taille) {
-    for (int i = 0; i < taille; i++) {
-        printf("[%d]", tab[i]);
+    for (int i = 0; i < taille - 1; i++) {
+        printf("%d, ", tab[i]);
     }
-    printf("\n");
+    printf("%d.\n", tab[taille - 1]);
 }
 
 int getPlusGrandeValeur(int tab[], int taille) {
