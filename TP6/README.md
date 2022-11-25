@@ -1,5 +1,5 @@
 # Cours 6 
-## Exemple 1 - Trace mémoire
+## Trace mémoire de l'exemple 1 du cours
 
 | Adresse    | Valeur    | Variable   | Bloc / fonction | Type    | Libération     |
 |------------|-----------|------------|-----------------|---------|----------------|
@@ -14,7 +14,9 @@
 
 > [main] a = 2, b = 7, inc = 1
 
-## Exemple 2 - Trace mémoire
+---
+
+## Trace mémoire de l'exemple 2 du cours
 
 | Adresse    | Valeur    | Variable   | Bloc / fonction        | Type    | Libération        |
 |------------|-----------|------------|------------------------|---------|-------------------|
@@ -36,7 +38,9 @@
 > [incrementParAdresse] Adresse : 0xabcd, valeur : 7 (on travaille sur le même espace mémoire)<br>
 > [main] Valeur après incrementParAdresse : 9 (la valeur est directement modifiée en mémoire)
 
-## Explication alternative
+---
+
+## Explication des opérateurs `*` et `&`
 
 Soient `a` et `p` :
 ```C
@@ -54,7 +58,9 @@ Donc si et seulement si `p == &a` alors
 *p  ==   a
 ```
 
-## Déclarations multiples
+---
+
+## Déclaration multiple de pointeurs
 
 On peut déclarer plusieurs entiers ainsi :
 
@@ -73,6 +79,7 @@ int *p1, a, *p2, b, c;
 ```
 `a`, `b` et `c` sont des entiers et `p1` et `p2` sont des pointeurs sur entier.  
 
+---
 
 ## Multiplier avec des pointeurs
 
@@ -86,6 +93,48 @@ printf("%d", 2**p);   // 6
 printf("%d", *p*a);   // 9
 printf("%d", *p*5);   // 15
 ```
+
+---
+
+## Les pointeurs et `const`
+
+- `int*` : pointeur sur un entier
+- `int const *` : pointeur sur un entier constant (pointeur sur un `int const`) \*
+- `const int *` : pointeur sur un entier constant (pointeur sur un `const int`) \*
+- `int * const` : pointeur constant sur un entier
+- `int const * const` : pointeur constant sur un entier constant
+
+**NB :** Le premier `const` peut être écrit indifféremment des deux côtés du type :
+- `const int *` == `int const *`
+- `const int * const` == `int const * const`
+
+##### Pour aller plus loin :
+
+- `int **` : pointeur sur un pointeur sur un entier
+- `int ** const` : pointeur constant sur un pointeur sur un entier
+- `int * const *` : pointeur sur un pointeur constant sur un entier
+- `int const **` : pointeur sur un pointeur sur un entier constant
+- `int * const * const` : pointeur constant sur un pointeur constant sur un entier
+
+<sup>*Source : https://stackoverflow.com/questions/1143262/what-is-the-difference-between-const-int-const-int-const-and-int-const*</sup>
+
+##### A quoi ça sert d'utiliser `const` avec des pointeurs ?
+
+Parfois, nous manipulons de lourdes structures. Par exemple, si nous avons une structure `Jeu` qui contient toutes les données d'un jeu (plusieurs centaines d'octets), la passer en paramètres par valeur est lourd car cela revient à copier/coller tous ces octets pour la fonction appelée :
+```C
+void afficherJeu(Jeu j); // La structure (= beaucoup d'octets) va être copiée lors de l'appel
+```
+
+Nous préférons dans ce cas passer par adresse pour ne copier qu'une adresse :
+```C
+void afficherJeu(Jeu* j); // L'adresse de la structure va être copiée lors de l'appel (beaucoup moins lourd)
+```
+
+Cependant, cela revient à transmettre à la fonction l'original, qu'elle pourra modifier à sa guide sans que l'on ne puisse faire quoi que ce soit... C'est là qu'intervient `const` :
+```C
+void afficherJeu(const Jeu* j); // Nous ne copions que l'adresse (léger), il s'agit donc d'un passage par adresse, mais la fonction ne pourra pas modifier notre structure Jeu !
+```
+--- 
 
 ## Exercice d'entraînement
 
