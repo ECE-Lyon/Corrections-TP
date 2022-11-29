@@ -40,6 +40,36 @@
 
 ---
 
+## `return` ou passage par adresse ?
+
+```C
+#include <stdio.h>
+
+int saisirEntierV1() {
+    int n;
+    printf("Veuillez saisir un entier :\n");
+    scanf("%d", &n);
+    return n;
+}
+
+void saisirEntierV2(int* pN) {
+    printf("Veuillez saisir un entier :\n");
+    scanf("%d", pN); // ou scanf("%d", &*pN); ou scanf("%d", &*&*&*&*&*&*&*pN); (& et * s'annulent)
+}
+
+int main() {
+    int entier;
+    // Version 1 :
+    entier = saisirEntierV1();
+    saisirEntierV1(); // problème : on peut appeler la V1 sans même récupérer la valeur retournée. INUTILE.
+    // Version 2 :
+    saisirEntierV2(&entier); // aucun risque d'oublier de récupérer l'entier
+    return 0;
+}
+```
+
+---
+
 ## Explication des opérateurs `*` et `&`
 
 Soient `a` et `p` :
