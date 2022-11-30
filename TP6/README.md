@@ -62,6 +62,7 @@ int main() {
     // Version 1 :
     entier = saisirEntierV1();
     saisirEntierV1(); // problème : on peut appeler la V1 sans même récupérer la valeur retournée. INUTILE.
+    printf("%d", saisirEntierV1()); // on peut l'utiliser en tant que paramètre de fonction
     // Version 2 :
     saisirEntierV2(&entier); // aucun risque d'oublier de récupérer l'entier
     return 0;
